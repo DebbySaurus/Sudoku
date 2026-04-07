@@ -432,7 +432,7 @@ h1 {
 /* ==========================
     responsive
 ========================== */
-@media (max-width: 360px) {
+@media (max-width: 500px) {
     body {
         padding: 10px;
         align-items: flex-start;
