@@ -24,6 +24,7 @@ body {
 ========================== */
 .border {
     width: fit-content;
+    max-width: 100%;
     padding: 26px 26px 30px;
     border-radius: 30px;
 
@@ -97,13 +98,14 @@ h1 {
 .warning {
     margin: 20px 0 0 0 !important;
     font-size: 18px !important;
+    line-height: 1.35;
 }
 
 /* ==========================
     start button
 ========================== */
 .wood-btn {
-    padding: 12px 0;
+    padding: 12px 16px;
     border: 1px solid rgba(90,66,0,0.35);
     border-radius: 18px;
     min-width: 120px;
@@ -148,6 +150,7 @@ h1 {
 .timer-wrap {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .sub-score {
@@ -234,8 +237,10 @@ h1 {
 .grid {
     display: flex;
     flex-direction: column;
+    width: fit-content;
     border: 2px solid rgba(85, 67, 41, 0.50);
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    margin: 0 auto;
 }
 
 .row {
@@ -342,7 +347,7 @@ h1 {
 }
 
 /* ==========================
-    difficulty selector
+    difficulty selector / popups
 ========================== */
 .difficulty,
 #reveal-solution,
@@ -350,18 +355,21 @@ h1 {
     display: flex;
     justify-content: space-evenly;
     width: fit-content;
+    max-width: calc(100vw - 24px);
     padding: 26px 26px 30px;
     border-radius: 30px;
     flex-direction: column;
-    position:fixed;
-    z-index: 1;
+    position: fixed;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
     visibility: hidden;
 
     background-image: url("./assets/dark_wood.jpg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;  
-    
+    background-repeat: no-repeat;
+
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.75);
 }
 
@@ -379,11 +387,12 @@ h1 {
 .reveal-btns {
     display: flex;
     justify-content: space-around;
+    gap: 14px;
 }
 
 /* styled labels = buttons */
 .diff-label {
-    padding: 8px 18px; /* smaller than Start */
+    padding: 8px 18px;
     border-radius: 14px;
 
     background: linear-gradient(#f1d86d, #d4b345);
@@ -416,42 +425,122 @@ h1 {
 /* active (checked) state */
 .difficulty input[type="radio"]:checked + .diff-label {
     transform: translateY(1px) scale(0.98);
-
-    background: linear-gradient(#e6c85a, #caa332); /* slightly darker gold */
-
-    color: #3a2a00; /* stronger contrast */
-
+    background: linear-gradient(#e6c85a, #caa332);
+    color: #3a2a00;
     box-shadow:
         inset 0 3px 4px rgba(0,0,0,0.35),
         inset 0 -1px 2px rgba(255,255,255,0.25),
-        0 0 8px rgba(220, 180, 90, 0.35); /* warm glow */
-
+        0 0 8px rgba(220, 180, 90, 0.35);
     border: 1px solid rgba(60, 40, 0, 0.5);
 }
 
 /* ==========================
-    responsive
+    tablet / small laptop
 ========================== */
-@media (max-width: 500px) {
+@media (max-width: 760px) {
     body {
-        padding: 10px;
+        padding: 16px;
         align-items: flex-start;
     }
 
     .border {
         width: 100%;
-        max-width: 100%;
+        padding: 16px;
+        border-radius: 22px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 14px;
+    }
+
+    .top-panel {
+        margin-bottom: 16px;
+    }
+
+    .timer-wrap {
+        gap: 12px;
+    }
+
+    .timer-label,
+    .hint-label {
+        font-size: 1.05rem;
+    }
+
+    .timer-panel,
+    .hint-panel {
+        min-width: 90px;
+        padding: 8px 12px;
+    }
+
+    #timer,
+    #hints {
+        font-size: 1.1rem;
+    }
+
+    .top-controls {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .wood-btn {
+        font-size: 1rem;
+        min-width: 100px;
+        padding: 10px 14px;
+    }
+
+    .playfield {
+        padding: 12px;
+        border-radius: 18px;
+        overflow-x: auto;
+    }
+
+    .cell {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .difficulty,
+    #reveal-solution,
+    #solved {
+        width: calc(100vw - 32px);
+        padding: 20px 18px 22px;
+        border-radius: 22px;
+    }
+
+    .difficulty p,
+    #reveal-solution p,
+    #solved p {
+        font-size: 1.1rem;
+    }
+
+    .diff-buttons {
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .warning {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* ==========================
+    mobile
+========================== */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .border {
         padding: 12px;
         border-radius: 18px;
     }
 
     h1 {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
         margin-bottom: 12px;
-    }
-
-    .top-panel {
-        margin-bottom: 14px;
     }
 
     .timer-wrap {
@@ -464,34 +553,20 @@ h1 {
         width: 100%;
     }
 
-    .timer-label,
-    .hint-label {
-        font-size: 0.95rem;
-    }
-
     .timer-panel,
     .hint-panel {
         width: 100%;
         min-width: 0;
-        padding: 8px 10px;
-    }
-
-    #timer,
-    #hints {
-        font-size: 1rem;
     }
 
     .top-controls {
         flex-direction: column;
-        gap: 10px;
         align-items: stretch;
     }
 
     .wood-btn {
         width: 100%;
         min-width: 0;
-        padding: 10px 12px;
-        font-size: 1rem;
     }
 
     .playfield {
@@ -501,22 +576,20 @@ h1 {
     }
 
     .grid {
-        width: fit-content;
         margin: 0 auto;
     }
 
     .cell {
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 36px;
         font-size: 1rem;
     }
 
     .difficulty,
     #reveal-solution,
     #solved {
-        width: calc(100vw - 24px);
-        max-width: 320px;
-        padding: 18px 16px 20px;
+        width: calc(100vw - 20px);
+        padding: 18px 14px 20px;
         border-radius: 18px;
     }
 
@@ -524,6 +597,7 @@ h1 {
     #reveal-solution p,
     #solved p {
         font-size: 1rem;
+        line-height: 1.4;
     }
 
     .diff-buttons {
@@ -532,7 +606,7 @@ h1 {
     }
 
     .reveal-btns {
-        gap: 10px;
+        flex-direction: column;
     }
 
     .reveal-btns .wood-btn {
@@ -542,5 +616,43 @@ h1 {
     .warning {
         font-size: 0.9rem !important;
         margin-top: 14px !important;
+    }
+}
+
+/* ==========================
+    very small phones
+========================== */
+@media (max-width: 360px) {
+    body {
+        padding: 8px;
+    }
+
+    .border {
+        padding: 10px;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .playfield {
+        padding: 6px;
+    }
+
+    .cell {
+        width: 34px;
+        height: 34px;
+        font-size: 0.95rem;
+    }
+
+    .timer-label,
+    .hint-label {
+        font-size: 0.95rem;
+    }
+
+    #timer,
+    #hints {
+        font-size: 1rem;
     }
 }
