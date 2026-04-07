@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <div class="game-container border">
+        <div class="top-panel">
+            <h1>Sudoku</h1>
+
+            <div class="timer-wrap">
+                <div class="sub-score">
+                    <label class="timer-label">Time:</label>
+                    <div class="timer-panel">
+                        <span id="timer">00:00:00</span>
+                    </div>
+                </div>
+
+                <div class="sub-score">
+                    <label class="hint-label">Hints used:</label>
+                    <div class="hint-panel">
+                        <span id="hints">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top-controls">
+                <button id="startButton" class="wood-btn">Start</button>
+
+                <button id="hint" class="wood-btn gamerunning">Hint</button>
+
+                <button id="solution" class="wood-btn gamerunning">Solution</button>
+            </div>
+
+        </div>
+
+        <div class="playfield">
+            <div class="grid" id="grid"></div>
+        </div>
+    </div>
+    <div id="difficulty" class="difficulty">
+            <p>Select difficulty</p>
+            <div class="diff-buttons">
+                <button class="wood-btn" id="diff-easy" name="difficulty" value="easy">Easy</button>
+
+                <button class="wood-btn" id="diff-medium" name="difficulty" value="medium">Medium</button>
+
+                <button class="wood-btn" id="diff-hard" name="difficulty" value="hard">Hard</button>
+
+                <button class="wood-btn" id="diff-extreme" name="difficulty" value="extreme">Extreme</button>
+            </div>
+            <p class="warning">
+                Extreme can take a few seconds.
+            </p>
+        </div>
+
+        <div id="reveal-solution">
+            <p>Are you sure you want to reveal the solution?<br>
+                This cannot be undone.
+            </p>
+            <div class="reveal-btns">
+                <button id="reveal-yes" class="wood-btn">yes</button>
+                <button id="reveal-no" class="wood-btn">no</button>
+            </div>
+        </div>
+
+        <div id="solved">
+            <p>Puzzle complete!</p>
+            <button id="ok" class="wood-btn">Close</button>
+        </div>
+</body>
+</html>
